@@ -1,0 +1,21 @@
+﻿name: ParseBranchRequest
+description: Parse a user request to create a new branch and extract branchName and baseBranch.
+template_format: handlebars
+template: |
+  Extract branch creation details from the user input.
+
+  User input:
+  {{input}}
+
+  Return ONLY valid JSON with this schema:
+  {
+    "missing": true|false,
+    "branchName": "string or empty",
+    "baseBranch": "string or empty",
+    "question": "if missing=true, ask a single short question to get missing fields, else empty"
+  }
+
+  Rules:
+  - If branchName is missing, missing=true.
+  - If baseBranch is missing, missing=true.
+  - If both exist, missing=false and question="".
